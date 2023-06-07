@@ -14,19 +14,16 @@ public class Main {
 
         carro.acelerar(10);
 
-        carro.desligarMotor();
-        System.out.println(carro.isMotorLigado());
-
         if(pneu.getPressao() > 29) {
             System.out.println("Pressao do pneu é de: " + pneu.getPressao() + ". A pressão está boa");
         } else {
             System.out.println("Precisa calibrar o pneu");
         }
 
+        carro.manutencao(pneu);
         pneu.trocarPneu(carro);
-
-        int n = carro.getVelocidade();
-        System.out.println(n);
-        pneu.getPressao();
+        carro.frear();
+        pneu.trocarPneu(carro);
+        carro.manutencao(pneu);
     }
 }

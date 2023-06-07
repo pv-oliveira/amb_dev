@@ -3,9 +3,12 @@ public class Pneu {
     private int tamanho;
     private int pressao;
 
+    private boolean novoPneu;
+
     public Pneu(String marca, int tamanho) {
         this.marca = marca;
         this.tamanho = tamanho;
+        this.novoPneu = false;
         this.pressao = 30; // Pressão inicial padrão
     }
 
@@ -21,10 +24,13 @@ public class Pneu {
         return pressao;
     }
 
+    public boolean isNovoPneu() { return novoPneu; }
+
     public void trocarPneu(Carro carro) {
         if (carro.getVelocidade() > 0) {
             System.out.println("O carro está em movimento, pare o carro para trocar o pneu!");
         } else {
+            this.novoPneu = true;
             System.out.println("O pneu foi trocado.");
         }
     }

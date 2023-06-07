@@ -69,7 +69,36 @@ public class Carro {
         }
     }
 
+    public void frear() {
+        if (motorLigado) {
+            System.out.println("Freando o motor...");
+            for (int i = velocidade; i >= 0; i -= 5) {
+                System.out.println("Velocidade atual: " + i + " km/h");
+                try {
+                    Thread.sleep(1000); // Aguarda 1 segundo
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println("O motor está parado.");
+            velocidade = 0;
+        } else {
+            System.out.println("Não é possível frear. O motor está desligado.");
+        }
+    }
+
     public int getVelocidade() {
         return velocidade;
+    }
+
+    public void manutencao(Pneu pneu) {
+        if(pneu.getPressao() < 29) {
+            System.out.println("Os pneus precisam de manutenção, calibrando...");
+            pneu.encherPneu(35);
+        } else if(pneu.isNovoPneu()){
+            System.out.println("Pressao está boa, e pneu está novo, manutenção feita...");
+        } else {
+            System.out.println("Pressao está boa, mas pneu está velho, recomendo trocar...");
+        }
     }
 }
