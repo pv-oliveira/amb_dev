@@ -2,12 +2,14 @@ public class Carro {
     private String marca;
     private String modelo;
     private int ano;
+    private int velocidade;
     private boolean motorLigado;
 
     public Carro(String marca, String modelo, int ano) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;
+        this.velocidade = 0;
         this.motorLigado = false;
     }
 
@@ -49,10 +51,11 @@ public class Carro {
         }
     }
 
-    public void acelerar(int velocidade) {
+    public void acelerar(int novaVelocidade) {
+        velocidade = novaVelocidade;
         if (motorLigado) {
             System.out.println("Acelerando o motor...");
-            for (int i = 0; i <= velocidade; i += 10) {
+            for (int i = 0; i <= novaVelocidade; i += 10) {
                 System.out.println("Velocidade atual: " + i + " km/h");
                 try {
                     Thread.sleep(1000); // Aguarda 1 segundo
@@ -60,9 +63,13 @@ public class Carro {
                     e.printStackTrace();
                 }
             }
-            System.out.println("O motor está a " + velocidade + " km/h.");
+            System.out.println("O motor está a " + novaVelocidade + " km/h.");
         } else {
             System.out.println("Não é possível acelerar. O motor está desligado.");
         }
+    }
+
+    public int getVelocidade() {
+        return velocidade;
     }
 }
